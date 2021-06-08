@@ -1,4 +1,4 @@
-<?php
+<?PHP
 
 // DBに接続する関数を定義
 include('functions.php'); // 関数を記述したファイルの読み込み
@@ -6,7 +6,7 @@ $pdo = connect_to_db();  // 関数実行
 
 
 //  データ参照SQL作成 SELECT=参照 *=全部
-$sql = 'SELECT * FROM body_input'; //全部表示
+$sql = 'SELECT * FROM users_table'; //全部表示
 // $sql = 'SELECT * FROM todo_table ORDER BY deadline ASC LIMIT 5'; //上から5個表示
 
 $stmt = $pdo->prepare($sql);
@@ -24,14 +24,16 @@ if ($status == false) {
   $output = "";
   foreach ($result as $record) {
     $output .= "<tr>";
-    $output .= "<td>{$record["date"]}</td>";
-    $output .= "<td>{$record["name"]}</td>";
-    $output .= "<td>{$record["moon_age"]}</td>";
-    $output .= "<td>{$record["height"]}</td>";
-    $output .= "<td>{$record["weight"]}</td>";
+    $output .= "<td>{$record["id"]}</td>";
+    $output .= "<td>{$record["username"]}</td>";
+    $output .= "<td>{$record["password"]}</td>";
+    $output .= "<td>{$record["is_admin"]}</td>";
+    $output .= "<td>{$record["is_deleted"]}</td>";
+    $output .= "<td>{$record["created_at"]}</td>";
+    $output .= "<td>{$record["updated_at"]}</td>";
     // edit deleteリンクを追加
-    $output .= "<td><a href='body_edit.php?id={$record["id"]}'>修正</a></td>";
-    $output .= "<td><a href='body_delete.php?id={$record["id"]}'>削除</a></td>";
+    $output .= "<td><a href='login_edit.php?id={$record["id"]}'>修正</a></td>";
+    $output .= "<td><a href='login_delete.php?id={$record["id"]}'>削除</a></td>";
     $output .= "</tr>";
   }
 }
@@ -50,16 +52,19 @@ if ($status == false) {
 
 <body>
   <fieldset>
-    <legend>DB連携型todoリスト（一覧画面）</legend>
-    <a href="body_input.php">入力画面</a>
+    <legend>DB連携型ユーザーリスト（一覧画面）</legend>
+    <a href="index.html">ホーム画面へ</a>
+    <a href="login_input.php">ユーザー登録画面へ</a>
     <table>
       <thead>
         <tr>
-          <th>測定日</th>
-          <th>名前</th>
-          <th>月齢</th>
-          <th>身長</th>
-          <th>体重</th>
+          <th>id</th>
+          <th>username</th>
+          <th>password</th>
+          <th>is_admin</th>
+          <th>is_deleted</th>
+          <th>created_at</th>
+          <th>updated_at</th>
         </tr>
       </thead>
       <tbody>

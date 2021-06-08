@@ -1,17 +1,28 @@
-
-.top h1 {
-  text-align: center;
+html {
+  background: #ffffe0;
 }
 
-.top p {
-  border: 1px solid yellow;
-  font-size: 18px;
-  height: 150px;
+a {
+  text-decoration: none;
+  display: block;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login_index {
   width: 250px;
-  background-color: aquamarine;
-  margin: 0 auto;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  padding: auto 0;
+  height: 50px;
+  border: darkblue 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
+
+
